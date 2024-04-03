@@ -1,5 +1,5 @@
 # Sina Kashanchi #A01344903
-# nginx-2420
+# nginx-2420 Assignment 3 Part 1
 
 # Step 1: Installing Necessary Software
 
@@ -7,6 +7,8 @@ First, update your package lists to ensure you can install the latest versions o
 
 
 `sudo pacman -Syu`
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/918c993d-e1d4-4f49-b3da-4d34602d1e02)
+
 
 Then, install Nginx and Vim:
 
@@ -14,15 +16,17 @@ Then, install Nginx and Vim:
 `sudo pacman -S nginx`
 `sudo systemctl start nginx`
 `sudo systemctl enable nginx`
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/540c191e-1749-4d31-9ead-9c424a4bc15d)
+Then we check the status of nginx service:
 
-`sudo pacman -S vim`
-`sudo systemctl start vim`
-`sudo systemctl enable vim`
+`sudo systemctl status nginx`
+
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/2fa2380a-3c0f-49d7-a435-bb8d1744405a)
+
 
 # Step 2: Creating a Project Directory
 
 Create a new directory for your website files. This guide uses /web/html/nginx-2420 as the project root:
-
 
 `sudo mkdir -p /web/html/nginx-2420`
 
@@ -30,10 +34,12 @@ Create a new directory for your website files. This guide uses /web/html/nginx-2
 
 Place your HTML document
 
-
 `sudo vim /web/html/nginx-2420/index.html`
 
 We paste the provided HTML content into the file, save, and exit the editor.
+
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/fcdbaed6-6e82-42c1-ab32-ab6c8bf96aaa)
+
 # Step 4: Configuring Nginx
 Creating a Server Block
 
@@ -60,6 +66,8 @@ server {
     }
 }
 ```
+
+
 Enable this configuration by creating a symlink:
 
 
@@ -73,8 +81,9 @@ Edit the main Nginx configuration file to include enabled server blocks:
 
 Add this line within the http block:
 
-
 `include /etc/nginx/sites-enabled/*;`
+
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/fcd34334-d9da-464a-8b9b-65ab63f4b990)
 
 # Step 5: Managing the Nginx Service
 
@@ -87,8 +96,10 @@ Ensure Nginx starts on boot:
 
 `sudo systemctl enable nginx`
 
-# Step 6: Oprn broswer and go to IP address of server
+# Step 6: Open your  browser and go to the IP address of the server
 
 Type `http://64.23.162.251/`
 
 And you should able to see this on your screen:
+
+![Screenshot (289)](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/1cc05f41-779f-40ef-a5e9-30796cef8deb)
