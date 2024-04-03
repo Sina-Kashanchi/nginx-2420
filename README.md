@@ -8,10 +8,16 @@ First, update your package lists to ensure you can install the latest versions o
 
 `sudo pacman -Syu`
 
-Then, install Nginx and Vim (or your preferred text editor):
+Then, install Nginx and Vim:
 
 
-`sudo pacman -S nginx vim`
+`sudo pacman -S nginx`
+`sudo systemctl start nginx`
+`sudo systemctl enable nginx`
+
+`sudo pacman -S vim`
+`sudo systemctl start vim`
+`sudo systemctl enable vim`
 
 # Step 2: Creating a Project Directory
 
@@ -27,12 +33,11 @@ Place your HTML document
 
 `sudo vim /web/html/nginx-2420/index.html`
 
-Paste the provided HTML content into the file, save, and exit the editor.
+We paste the provided HTML content into the file, save, and exit the editor.
 # Step 4: Configuring Nginx
 Creating a Server Block
 
 Nginx configuration for your project should be in its own file, not in the main nginx.conf. Create a new configuration file in /etc/nginx/sites-available and symlink it to /etc/nginx/sites-enabled to enable it:
-
 
 
 `sudo mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled`
@@ -45,7 +50,7 @@ Add the following configuration, adjusting paths as necessary:
 ```
 server {
     listen 80;
-    server_name your_server_ip;
+    server_name 64.23.162.251;
 
     root /web/html/nginx-2420;
     index index.html;
@@ -82,3 +87,8 @@ Ensure Nginx starts on boot:
 
 `sudo systemctl enable nginx`
 
+# Step 6: Oprn broswer and go to IP address of server
+
+Type `http://64.23.162.251/`
+
+And you should able to see this on your screen:
