@@ -47,6 +47,46 @@ Check the status to ensure it's active and the rules are applied:
 
 # Step 2: Preparing the Backend Service
 
+- Create a new systemd service file:
+
+
+`sudo vim /etc/systemd/system/hello-server.service`
+
+- Populate the file with the following:
+
+```bash
+[Unit]
+Description=Hello Server Backend
+
+[Service]
+ExecStart=/usr/local/bin/hello-server
+Restart=always
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
+```
+- Enable and start the service:
+
+`sudo systemctl enable hello-server`
+`sudo systemctl start hello-server`
+
+# Step 3: Configuring Nginx for Reverse Proxy
+
+Edit your Nginx server block configuration to reverse proxy requests to the backend:
+
+
+
+![image](https://github.com/Sina-Kashanchi/nginx-2420/assets/148367803/e925f371-3b2e-492a-b5b4-9925a675d473)
+
+
+`sudo vim /etc/systemd/system/hello-server.service`
+
+Modify the server block created in Part 1 to reverse proxy requests to the backend.
+
+`sudo vim /etc/nginx/sites-available/nginx-2420`
+
 
 
 
